@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dokumentation</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- Zurück-Button oben links -->
+  <a href="../index.html" class="back-button">&larr; Zurück</a>
+
+  <!-- Container für den Dokumentationsinhalt -->
+  <div class="doc-container">
+    <!-- Breites Bild oben -->
+    <div class="doc-header-image">
+      <img src="../images/wide-rick.jpeg" alt="Header Bild">
+    </div>
+
+    <!-- Überschrift -->
+    <h1>Hello, World!</h1>
+
+    <!-- Inhalt: Abwechselnd Text, Bilder und Codeblöcke -->
+    <section class="doc-section">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <div class="doc-image-small">
+        <img src="../images/ascii-rick.png" alt="Kleines Bild">
+      </div>
+      <pre class="doc-code">
+<code>
+// Beispielcode
+function helloWorld() {
+  println("Hello, World!");
+}
+</code>
+        <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+      </pre>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <div class="doc-image-small">
+        <img src="../images/ascii-rick.png" alt="Zweites Bild">
+      </div>
+      <pre class="doc-code">
+<code>
+// Never gonna give you up!
+const add = (never, gonna) => let + you;
+down;
+</code>
+        <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+      </pre>
+    </section>
+  </div>
+
+  <!-- Script für den Copy-Button -->
+  <script>
+    function copyCode(btn) {
+      const codeBlock = btn.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

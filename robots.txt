@@ -1,0 +1,223 @@
+# Block all crawlers by default
+User-agent: *
+Disallow: /
+
+# Google Crawlers
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Googlebot-AI
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: AdsBot-Google
+Disallow: /
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: Googlebot-News
+Disallow: /
+
+User-agent: Googlebot-Video
+Disallow: /
+
+User-agent: FeedFetcher-Google
+Disallow: /
+
+User-agent: MediaPartners-Google
+Disallow: /
+
+User-agent: Google-Read-Aloud
+Disallow: /
+
+User-agent: Storebot-Google
+Disallow: /
+
+# Bing Crawlers
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Bingbot-AI
+Disallow: /
+
+User-agent: BingPreview
+Disallow: /
+
+User-agent: MSNBot
+Disallow: /
+
+User-agent: MSNBot-Media
+Disallow: /
+
+# OpenAI Crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+# Anthropic Crawlers
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Anthropic-AI
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+# DuckDuckGo Crawlers
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: DuckDuckGo-Favicons-Bot
+Disallow: /
+
+# Yandex Crawlers
+User-agent: YandexBot
+Disallow: /
+
+User-agent: YandexImages
+Disallow: /
+
+User-agent: YandexAccessibilityBot
+Disallow: /
+
+User-agent: YandexMobileBot
+Disallow: /
+
+# Yahoo Crawlers
+User-agent: Slurp
+Disallow: /
+
+# Baidu Crawlers
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: Baiduspider-image
+Disallow: /
+
+User-agent: Baiduspider-video
+Disallow: /
+
+# Additional AI Crawlers
+User-agent: CCBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Clarabot
+Disallow: /
+
+User-agent: Mistralbot
+Disallow: /
+
+User-agent: Anthropic-Preferences-Crawler
+Disallow: /
+
+User-agent: Claude-URL-Analyzer
+Disallow: /
+
+User-agent: AllenInstituteBot
+Disallow: /
+
+User-agent: Huaweisearch
+Disallow: /
+
+User-agent: SpaceSDKBot
+Disallow: /
+
+# Social Media Crawlers
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Applebot
+Disallow: /
+
+User-agent: facebookexternalhit
+Disallow: /
+
+User-agent: Pinterest
+Disallow: /
+
+User-agent: Twitterbot
+Disallow: /
+
+User-agent: LinkedInBot
+Disallow: /
+
+# SEO and Analytics Crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: RankSonicBot
+Disallow: /
+
+User-agent: SeokicksBot
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+User-agent: Exabot
+Disallow: /
+
+User-agent: AspiegelBot
+Disallow: /
+
+User-agent: spbot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: SurdotlyBot
+Disallow: /
+
+User-agent: MegaIndex
+Disallow: /
+
+# EXPLICITLY ALLOW ARCHIVE AND KNOWLEDGE PRESERVATION SERVICES
+User-agent: ia_archiver
+Allow: /
+
+User-agent: archive.org_bot
+Allow: /
+
+User-agent: Wayback Machine Live Record
+Allow: /
+
+User-agent: Waybackmachine
+Allow: /
+
+User-agent: Internet-archive-bot
+Allow: /
+
+# Allow other knowledge preservation services
+User-agent: Wikimedia
+Allow: /
+
+User-agent: WikipediaBot
+Allow: /
