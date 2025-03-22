@@ -1,4 +1,2 @@
-# Coming Soon
-KippKiller
-
-Learning environment for programming. Like the one by Michael Kipp, but better.
+# RandomBytes Education
+Eine Lernwebsite zum einstieg ins Programmieren.
