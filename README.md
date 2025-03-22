@@ -1,2 +1,2 @@
 # RandomBytes Education
-Eine Lernwebsite zum einstieg ins Programmieren.
+Eine Lernwebsite zum Einstieg ins Programmieren.
