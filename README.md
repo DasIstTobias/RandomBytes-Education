@@ -7,3 +7,4 @@ To-Do Liste:
 - Inhalt erstellen.
 - Trennung der localStorage Dateien der verschiedenen Web IDEs.
 - Optimierung für Mobilgeräte und Desktop.
+- Anleitung und Editor für README.md Dateien.
