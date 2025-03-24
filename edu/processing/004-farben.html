@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Processing</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a href="../processing.html" class="back-button">&larr; Zurück</a>
+  
+  <div class="doc-container">
+    <h1>Farben</h1>
+    
+    <section class="doc-section">
+      <p>
+        Im auf der letzten Seite haben wir am Ende Pacman gezeichnet. Dieser braucht natürlich auch Farbe. Dies ist aber sehr einfach. Zum Ausfüllen mit Farben muss man nur die Farbe in RGB angeben, nachdem man den Befehl "fill" benutzt hat.
+      </p>
+      
+      <pre class="doc-code">
+<code>
+fill(255, 255, 0);
+arc(50, 50, 80, 80, radians(30), radians(330));
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      
+      <p>
+        Die Farbe von Text wird ebenfalls mit "fill" geändert.
+      </p>
+      
+      <pre class="doc-code">
+<code>
+fill(255, 0, 0);
+text("Moin", 50, 50);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      
+      <p>
+        Die Farbe kann jederzeit geändert werden, sodass verschiedene Formen in verschiedenen Farben existieren können.
+      </p>
+      
+      <pre class="doc-code">
+<code>
+fill(255, 255, 0);
+arc(50, 50, 80, 80, radians(30), radians(330));
+
+fill(0, 255, 255);
+rect(40, 40, 20, 20);
+ellipse(80, 50, 20, 20);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      
+      <p>
+        Des Weiteren können die Farben auch nur mit einem Wert angegeben werden, welcher ebenfalls von 0 bis 255 geht. Dadurch kann man die Graustufe verändern.
+      </p>
+      
+      <pre class="doc-code">
+<code>
+fill(160);
+rect(20, 20, 60, 60);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      
+      <p>
+        Transparenz kann auch erzeugt werden, indem man einen vierten Wert von 0 bis 255 angibt.
+      </p>
+      
+      <pre class="doc-code">
+<code>
+fill(100, 230);
+rect(40, 40, 40, 40);
+
+fill(0, 255, 0, 160);
+rect(20, 20, 40, 40);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      
+      <div class="diagonal-line"></div>
+      
+      <p>
+        Mit "noFill" kann die Füllfarbe entfernt werden.
+      </p>
+      
+      <pre class="doc-code">
+<code>
+noFill();
+rect(20, 20, 60, 60);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      
+      <p>
+        Mit "stroke" und "strokeWeight" kann die Umrandung separat von der Füllfarbe eingestellt werden.
+      </p>
+      
+      <pre class="doc-code">
+<code>
+strokeWeight(8);
+stroke(0, 0, 255);
+ellipse(50, 50, 60, 60);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      
+      <p>
+        Mit "noStroke" kann die Umrandung entfernt werden.
+      </p>
+      
+      <pre class="doc-code">
+<code>
+noStroke();
+ellipse(50, 50, 60, 60);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      
+      <div class="diagonal-line"></div>
+      
+      <p>
+        Die Hintergrundfarbe kann mit "background" geändert werden.
+      </p>
+      
+      <pre class="doc-code">
+<code>
+background(255, 0, 0);
+rect(20, 20, 60, 60);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <script>
+    function copyCode(btn) {
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => { btn.innerText = "Code kopieren"; }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

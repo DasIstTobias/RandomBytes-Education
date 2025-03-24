@@ -1,0 +1,10 @@
+Everything in this folder ( /external ) is not programmed by myself, and is only here so that you can use the Programm Offline.
+I am not affiliated with the code in this ( /external ) folder and I am NOT its author.
+The code in this folder was downloaded from the following sources:
+
+- codemirror.min.css  ------------>  https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css
+- dracula.min.css  --------------->  https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css
+- jszip.min.js  ------------------>  https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js
+- codemirror.min.js  ------------->  https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js
+- clike.min.js  ------------------>  https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js
+- processing.min.js  ------------->  https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js
