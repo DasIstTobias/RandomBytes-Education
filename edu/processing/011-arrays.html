@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Arrays</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Zurück-Button oben links -->
+  <a href="../processing.html" class="back-button">&larr; Zurück</a>
+
+  <!-- Container für den Dokumentationsinhalt -->
+  <div class="doc-container">
+
+    <!-- Überschrift -->
+    <h1>Arrays</h1>
+
+    <!-- Inhalt: Abwechselnd Text, Bilder und Codeblöcke -->
+    <section class="doc-section">
+      <p>
+        Arrays kann man sich wie Variablen mit vielen Speicherwerten vorstellen. Ein Array erstellt man mit "int[]". Anschließend folgt der Name des Arrays. Nach einem Gleichheitszeichen folgt "new int[]", da ein neues Array erstellt werden soll. In die eckigen Klammern kommt dann die Anzahl, der Speicherplätze, die das Array haben soll.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int[] einArray = new int[4];
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Nun haben wir ein Array mit 4 Plätzen erstellt. Allerdings ist es leer. Die nummerierung der Plätze geht dabei von 0 aus. Das heißt ein Array mit 4 Plätzen hat keinen Platz 4. Ein Array mit 4 Plätzen hat die Plätze 0, 1, 2 und 3. Diese Plätze können wir nun mit Werten befüllen. das geht, wie bei Variablen, nur das bei Arrays noch die Nummer des Platzes in Eckigen Klammern angegeben wird.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int[] einArray = new int[4];
+einArray[0] = 175;
+einArray[1] = -80;
+einArray[2] = 62;
+einArray[3] = 182;
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Weil das aber nicht gut aussieht, können wir das Array auch gleich beim erstellen befüllen. Allerdings müssen wir dann auch alle Stellen gleich mit einem Wert belegen. Wir können kein Array mit 500 Plätzen erstellen, wenn wir nur die ersten 3 Werte beim erstellen definieren. Wenn wir die Werte beim erstellen Definieren, hat das Array immer automatisch genau so viele Plätze, wie wir Werte angegeben haben.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int[] zahlen = {175, -80, 62, 182};
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Dieses Array hat nun 4 Plätze, sodass wir keinen weiteren befüllen können.
+        Wenn wir nun Beispielsweise ein Array mit 500 Plätzen erstellen wollen und nur die ersten 3 definieren wollen, geht das beispielsweise so.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int[] einArray = new int[500];
+einArray[0] = 175;
+einArray[1] = -80;
+einArray[2] = 62;
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Die undefinierten Plätze stehen alle auf 0.
+        Wenn wir gleich am Anfang ein Array mit ausrechend Plätzen erstellen, müssen wir uns später keine Sorgen um den Speicherplatz machen und haben nicht so viele verschiedene Variablen, dass es unübersichtlich wird.
+      </p>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Mit Arrays kann man wie mit Variablen arbeiten. Wir können beispielsweise mit ihnen rechnen.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int[] einArray = new int[3];
+einArray[0] = 175;
+einArray[1] = -80;
+
+einArray[2] = einArray[0] + einArray[1];
+
+print(einArray[2]);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Die eigenschaften von Arrays kann man mit "arrayName.length" abrufen.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int[] einArray = new int[500];
+print(einArray.length);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Wenn wir keine Zahl in eckigen Klammern dahiter angeben, können wir alle Zahlen des Arrays auf einmal ausgeben.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int[] einArray = new int[4];
+einArray[0] = 175;
+einArray[1] = -80;
+einArray[2] = 62;
+einArray[3] = 182;
+
+print(einArray);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Das Array mit "int[]" ist natürlich nur ein Beispiel. Arrays können mit fast allen Variablentypen erstellt werden. Dementsprechend können wir für Zahlen mit Nachkommastellen auch ein "float" Array erstellen.
+      </p>
+
+      <pre class="doc-code">
+<code>
+float[] einFloatArray = new int[500];
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('https://example.com')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <!-- Script für den Copy-Button und den neuen IDE-Button -->
+  <script>
+    function copyCode(btn) {
+      // Den zu kopierenden Code ermitteln (das <code>-Element, welches direkt vor dem Button steht)
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
