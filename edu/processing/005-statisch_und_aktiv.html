@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Processing</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Zurück-Button oben links -->
+  <a href="../processing.html" class="back-button">&larr; Zurück</a>
+
+  <!-- Container für den Dokumentationsinhalt -->
+  <div class="doc-container">
+
+    <!-- Überschrift -->
+    <h1>Statischer und Aktiver Modus</h1>
+
+    <!-- Inhalt: Abwechselnd Text, Bilder und Codeblöcke -->
+    <section class="doc-section">
+      <p>
+        In Processing gibt es zwei Formate zu Programmieren. Zum einen den Statischen Modus und zum anderen den Aktiven Modus. Beim Statischen Modus werden die Befehle des Codes nacheinander abgearbeitet, anschließend endet das Programm.
+      </p>
+
+      <pre class="doc-code">
+<code>
+println("1");
+println("2");
+println("3");
+print("Ende");
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/005-001.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Im aktiven Modus gibt es Funktionen, in die der Code kommt. Wir arbeiten hier vorerst nur mit "setup" und "draw". Zuerst werden die Sachen in "setup" einmal ausgeführt, anschließend werden die Sachen in "draw" immer wieder ausgeführt, ohne ein festes Ende.
+      </p>
+
+      <pre class="doc-code">
+<code>
+void setup() { // Alles hier wird zuerst einmal ausgeführt.
+   println("1");
+   println("2");
+}
+
+void draw() { // Das hier wird dann ganz oft wiederholt.
+   println("Und ganz viele andere Zahlen.");
+}
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/005-002.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Da der Aktive Modus schon einmalig funktionen mit "setup" ausführen kann, funktioniert es nicht, wenn man Aktiv und Statisch mischt.
+      </p>
+
+      <pre class="doc-code">
+<code>
+void setup() {
+   println("Aktiver Modus");
+}
+
+println("Statischer Modus");
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/005-003.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Das geht also nicht. <br>
+        "draw" wird normalerweise 60 Mal pro Sekunde ausgeführt. Wenn man diese Zahl verändern möchte, geht das mit "frameRate" und der Zahl der Aufrufe pro Sekunde, welche du haben möchtest. Wenn du also zum Beispiel 120 Aufrufe pro Sekunde willst, machst du folgendes.
+      </p>
+
+      <pre class="doc-code">
+<code>
+void setup() {
+   frameRate(1);
+   println("1");
+   println("2");
+}
+
+void draw() {
+   println("Und ganz viele andere Zahlen.");
+}
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/005-004.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <!-- Script für den Copy-Button und den neuen IDE-Button -->
+  <script>
+    function copyCode(btn) {
+      // Den zu kopierenden Code ermitteln (das <code>-Element, welches direkt vor dem Button steht)
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

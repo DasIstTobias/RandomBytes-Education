@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Processing</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Zurück-Button oben links -->
+  <a href="../processing.html" class="back-button">&larr; Zurück</a>
+
+  <!-- Container für den Dokumentationsinhalt -->
+  <div class="doc-container">
+
+    <!-- Überschrift -->
+    <h1>Interaktionen</h1>
+
+    <!-- Inhalt: Abwechselnd Text, Bilder und Codeblöcke -->
+    <section class="doc-section">
+      <p>
+        Warum sollte man ein Programm schreiben, mit dem man nicht interagieren kann? Genau, das ergibt meistens keinen so großen Sinn.
+        Daher gibt es auch in Processing Wege, mit dem Programm zu interagieren. Ein Weg mit dem Programm zu interagieren ist die Position der Maus auf dem Zeichenfeld. Diese ist schon Standartmäßig eine Art Variable, welche immer auf die Mausposition zeigt. Mit "mouseX" und "mouseY" kannst du die Zeigerposition nutzen.
+      </p>
+
+      <pre class="doc-code">
+<code>
+void setup() {
+  size(300,300);
+}
+
+void draw() {
+  ellipse(mouseX, mouseY, 30, 30);
+}
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/006-001.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Zuerst wird die Fenstergröße auf 300 x 300 Pixel gesetzt. Anschließend wird 60 mal pro Sekunde ein Kreis auf der Position der Maus gemalt.
+        Irgendwann sind da aber viel zu viele Kreise und es sieht komisch aus. Also übermalen wir vor jedem Zeichnen des Kreises, die Anzeige mit einem neuen Hintergrund, sodass immer nur der aktuelle Kreis zu sehen ist.
+      </p>
+
+      <pre class="doc-code">
+<code>
+void setup() {
+  size(300,300);
+}
+
+void draw() {
+  background(255);
+  ellipse(mouseX, mouseY, 30, 30);
+}
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/006-002.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Nun sieht es so aus, als wäre es ein einzelner Kreis, welcher dem Zeiger folgt.
+        Mit den Eingaben "mouseX" und "mouseY" kann aber auch gerechnet werden, was sehr Praktisch ist, wenn man beispielsweise ein Rechteck zeichnet, bei dem man nicht die Mitte, sondern die Ecke oben-links angibt. So kann man das Rechteck trotzdem Mittig auf den Zeiger zeichnen.
+      </p>
+
+      <pre class="doc-code">
+<code>
+void setup() {
+  size(300,300);
+}
+
+void draw() {
+  background(230);
+  rect(mouseX - 20, mouseY - 20, 40, 40);
+}
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/006-003.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Eine weitere Möglichkeit der Interaktion sind Knöpfe auf der Tastatur oder Maus. Dies kann man mit "keyPressed" und "mousePressed" machen. Diese werden als neue Funktionen außerhalb von "draw" und "setup" geschrieben.
+      </p>
+
+      <pre class="doc-code">
+<code>
+void setup() {
+  size(300,300);
+}
+
+void keyPressed() {
+  background(230);
+  rect(mouseX - 20, mouseY - 20, 40, 40);
+}
+
+void mousePressed() {
+  background(230);
+}
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/006-004.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Dieses Programm malt ein Rechteck auf die Mausposition, wenn ein Knopf auf der Tastatur gedrückt wird und überschreibt das vorherige. Wenn ein Knopf auf der Maus gedrückt wird, wird alles übermalt.
+      </p>
+
+      <p>
+        Wenn spezifische Tasten abgefragt werden sollen, kann man eine if Anweisung mit "keyPressed" in die "draw" Schleife schreiben. In diese if Anweisung schreibt man dann eine weitere if Anweisung mit "key ==" oder "keyCode ==" und folgend den Namen der Taste in eingestrichenen Anführungszeichen. Wenn die Taste ein Symbol oder Buchstabe ist, welcher einfach genannt werden kann, schreibt man "key ==". Im Fall, dass es eine Taste ist, welche einen Namen in Form eines Keycodes hat, schreibt man "keyCode ==".
+      </p>
+
+      <pre class="doc-code">
+<code>
+void setup() {
+  size(300,300);
+}
+
+void draw() {
+  if(keyPressed) {
+    if(key == 'w'){
+      background(230);
+      fill(255, 0, 0);
+      rect(mouseX - 20, mouseY - 20, 40, 40);
+    }
+    if(keyCode == RIGHT){
+      background(230);
+      fill(0, 0, 255);
+      rect(mouseX - 20, mouseY - 20, 40, 40);
+    }
+  }
+}
+
+void mousePressed() {
+  background(230);
+}
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/006-005.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Dieser Code macht das selbe wie das vorherige Beispiel, nur dass dieser zwischen den Tasten "w" und der Rechten Pfeiltaste unterscheidet und je nach Taste ein rotes oder blaues Rechteck zeichnet. Wenn eine andere Taste auf der Tastatur gedrückt wird, passiert nichts.
+      </p>
+
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <!-- Script für den Copy-Button und den neuen IDE-Button -->
+  <script>
+    function copyCode(btn) {
+      // Den zu kopierenden Code ermitteln (das <code>-Element, welches direkt vor dem Button steht)
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

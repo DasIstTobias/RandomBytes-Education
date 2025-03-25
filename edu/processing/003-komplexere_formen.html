@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Processing</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a href="../processing.html" class="back-button">&larr; Zurück</a>
+  <div class="doc-container">
+    <h1>Komplexere Formen</h1>
+    <section class="doc-section">
+      <p>
+        Neben den Formen von der letzten Seite gibt es auch komplexere Formen. <br>
+        Komplexere Formen sind Formen, bei denen man mehrere Punkte angibt und anschließend eine Form erhält, welche zwischen diesen Punkten aufgespannt ist.
+      </p>
+      <p>
+        Beginnen wir mit einem Dreieck. Hierfür geben wir jeweils die Koordinaten der X- und Y-Achsen der drei Punkte an, nachdem wir den Befehl "triangle" benutzt haben. Also "x1, y1, x2, y2, x3, y3".
+      </p>
+      <pre class="doc-code">
+<code>
+triangle(50, 20, 20, 80, 80, 80);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/003-001.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      <p>
+        Fügen wir eine Ecke hinzu, erhalten wir ein Viereck. Dieses wird mit dem Befehl "quad" und dann den Koordinaten der vier Ecken gebildet. Also wie beim Dreieck, nur dass man zwei Werte mehr angibt.
+      </p>
+      <pre class="doc-code">
+<code>
+quad(20, 20, 80, 30, 60, 60, 20, 70);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/003-002.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      <p>
+        Natürlich ist man nicht auf höchstens vier Ecken begrenzt. Mit Polygonen kann man eine Form mit so vielen Ecken erstellen, wie man will.
+      </p>
+      <pre class="doc-code">
+<code>
+beginShape();
+vertex(50, 10);
+vertex(80, 60);
+vertex(10, 70);
+vertex(10, 20);
+vertex(40, 40);
+endShape(CLOSE);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/003-003.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      <p>
+        Auch eine komplexe Form ist ein Kreis, bei dem ein Teil fehlt. Dies macht man mit "arc".
+      </p>
+      <pre class="doc-code">
+<code>
+arc(50, 50, 80, 80, radians(30), radians(330));
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/003-004.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      <div class="diagonal-line"></div>
+      <p>
+        Eigentlich ist das ja keine Form, aber hier kann ich auch gleich erklären, wie man Text erstellt. Der Befehl dafür lautet "text".
+      </p>
+      <pre class="doc-code">
+<code>
+size(200, 200);
+text("Moin", 100, 100);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/003-005.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+      <p>
+        Wenn man nicht die linke Seite angeben will, sondern eine andere, kann man das mit "textAlign" und den Argumenten "LEFT", "RIGHT" und "CENTER". Die Größe kann mit "textSize" geändert werden.
+      </p>
+      <pre class="doc-code">
+<code>
+size(200, 200);
+textAlign(CENTER);
+textSize(20);
+text("Moin", 100, 100);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/003-006.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <script>
+    function copyCode(btn) {
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

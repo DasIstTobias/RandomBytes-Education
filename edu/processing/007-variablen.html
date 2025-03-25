@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Processing</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Zurück-Button oben links -->
+  <a href="../processing.html" class="back-button">&larr; Zurück</a>
+
+  <!-- Container für den Dokumentationsinhalt -->
+  <div class="doc-container">
+
+    <!-- Überschrift -->
+    <h1>Variablen</h1>
+
+    <!-- Inhalt: Abwechselnd Text, Bilder und Codeblöcke -->
+    <section class="doc-section">
+      <p>
+        In Processing gibt es natürlich auch Variablen. Das einfachste sind Integer, welche eine ganze Zahl angeben. Variablen können als Werte in den meisten Befehlen eingesetzt werden. Zur Veranschaulichung nehmen wir hier erstmal "print".
+      </p>
+
+      <pre class="doc-code">
+<code>
+int irgendeinName;
+irgendeinName = 50;
+print(irgendeinName);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-001.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Nachdem man mit int und dem Namen der Variable die Variable erstellt hat, kann man sie mit dem Namen der Variable definieren. Mit "=" kann man sie sofort auf einen Wert setzen, ansonsten kann man aber auch mit ihnen Rechnen.
+        Beim Rechnen setzt man zuerst den Namen der Variable und dann wie beim setzen eines Wertes ein "=". Hinter das "=" kommt anschließend die Rechnung, bei der auch die Variable selbst genannt werden darf.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int irgendeinName;
+irgendeinName = 50;
+irgendeinName = irgendeinName - 20;
+print(irgendeinName);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-002.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Aber es gibt nicht nur ganze Zahlen. Mit "float" für "floating point number" kann man Gleitkommazahlen in Variablen speichern. Kommazahlen werden allerdings mit einem Punkt statt einem Komma geschrieben.
+      </p>
+
+      <pre class="doc-code">
+<code>
+float andereZahl;
+andereZahl = 3.7;
+print(andereZahl);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-003.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        "float" speichert die Zahlen in 32-bit und kann daher nur maximal 8 Stellige Zahlen speichern. Sollte das nicht ausreichen, kann man "double" verwenden. "double" speichert Zahlen in 64-bit und kann daher bis zu 16 Stellige Zahlen speichern.
+      </p>
+
+      <pre class="doc-code">
+<code>
+double langeZahl;
+langeZahl = 3.7777777777777;
+print(langeZahl);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-004.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Manchmal braucht man aber auch einfach nur ja oder nein. Statt eine Variable zu haben, welche man immer zwischen 0 und 1 wechselt, kann man aber auch einfach eine boolean Variable nehmen. Diese kann entweder auf "true" oder "false" stehen. Mit dem Befehl "boolean" kann man eine boolean Variable erstellen.
+      </p>
+
+      <pre class="doc-code">
+<code>
+boolean jaOderNein;
+jaOderNein = false;
+print(jaOderNein);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-005.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Beim Programmieren kann es sich aber auch lohnen, ein Programm möglichst kompakt zu schreiben. Daher kann man das erstellen und definieren der Variable auch gleich in einem machen.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int zahl = 50;
+print(zahl);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-006.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Im aktiven Modus müssen die Variablen ganz am Anfang definiert werden, außerhalb von Schleifen. Nur dann können sie überall verwendet werden. Wenn eine Variable in "draw", "setup" oder einer anderen Umgebung definiert wird, kann sie nur in der jeweiligen Umgebung genutzt werden.
+      </p>
+
+      <pre class="doc-code">
+<code>
+int zahl = 60;
+
+void setup() {
+   println(zahl);
+}
+
+void draw() {
+   println(zahl);
+}
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-007.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        So kann man die Variable "zahl" überall nutzen.
+      </p>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Neben Zahlen und Ja/Nein als Variable, kann man aber auch einzelne Zeichen oder Zeichenketten speichern. Ein "char" ist dabei ein einzelnes Zeichen, während eine Zeichenkette von "String" erstellt wird.
+        Den Wert, beziehungsweise die Zeichen schreibt man in Anführungszeichen.
+      </p>
+
+      <pre class="doc-code">
+<code>
+char einZeichen;
+einZeichen = "A";
+print(einZeichen);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-008.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <pre class="doc-code">
+<code>
+String zeichenKette;
+zeichenKette = "Hier kann was stehen!";
+print(zeichenKette);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-009.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        In Processing gibt es auch Systemvariablen, wie "mouseX" und "mouseY". Die Höhe und Breite des Gesamten Fensters kann mit "height" und "width" abgerufen werden.
+      </p>
+
+      <pre class="doc-code">
+<code>
+size(300, 300);
+ellipse(height/2, width/2, 50, 50);
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+    <button class="ide-btn" onclick="openWebIDE('../processing-redirect/007-010.html')">In Web IDE öffnen</button>
+  </div>
+      </pre>
+
+      <p>
+        Dieses Programm malt einen Kreis genau in die Mitte des Zeichenbereiches, egal welche Größe bei "size" eingestellt ist.
+      </p>
+
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <!-- Script für den Copy-Button und den neuen IDE-Button -->
+  <script>
+    function copyCode(btn) {
+      // Den zu kopierenden Code ermitteln (das <code>-Element, welches direkt vor dem Button steht)
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
