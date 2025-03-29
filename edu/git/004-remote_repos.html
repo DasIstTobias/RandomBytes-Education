@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Git</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Zurück-Button oben links -->
+  <a href="../git.html" class="back-button">&larr; Zurück</a>
+
+  <!-- Container für den Dokumentationsinhalt -->
+  <div class="doc-container">
+
+    <!-- Überschrift -->
+    <h1>Remote Repos</h1>
+
+    <!-- Inhalt: Abwechselnd Text, Bilder und Codeblöcke -->
+    <section class="doc-section">
+      
+      <p>
+        Alles was hier ich hier bisher erklärt habe, war nur lokal. Wenn du mit einem Team an einem großen Projekt arbeitest ist das aber wahrscheinlich nicht nur lokal, damit von verschiedenen Orten aus gearbeitet werden kann. <br>
+        Um remote zu arbeiten benötigt man einen Git Server. Der bekannteste ist wahrscheinlich Github, aber es gibt auch andere welche man sich auch teilweise selber hosten kann, wie Gitlab, Codeberg oder Gitea.
+      </p>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Zuerst musst du ein Remote Repository erstellen falls du das noch nicht getan hast oder es noch keines gibt. Wie das geht ist je nach Service unterschiedlich, aber wenn du es geschafft hat, solltest du einen https oder ssh link bekommen. Ich werde hier HTTPS nutzen. <br>
+        Wenn es noch keinen Code gibt, kannst du erstmal mit einem offline Repository beginnen. Wenn du fertig bist, kannst du über:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git remote add origin https://domain.tld/deinName/Repostiory.git
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        das das standard remote Repository festlegen, welches dann unter dem namen "origin" in deinem offline Repository vermerkt ist. <br>
+        nun kannst du den Code deines aktuellen Branches über:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git push origin [Remote Branch name]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        in den von dir angegebenen Branch im Remote Repository pushen. Ich würde es an dieser stelle erstmal mit "git push origin master" in den Remote master Branch pushen.
+      </p>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Natürlich geht das nicht einfach so. Bevor du das machst, musst du dich authentifizieren, um dem Server zu zeigen, dass du berechtigungen hast, am Remote Repository zu Arbeiten. Das geht standartmäßig über ssh schlüssel, Access Token oder Nutzername und Passwort, aber manche dienste wie Github bieten auch andere möglichkeiten sich zu Authentifizieren. <br>
+        Außerdem brauchst du einen Namen und eine Email Adresse, die du angeben kannst. Diese setzt du dann bei dir lokal (und am besten gleich auf dem ganzen Gerät) im mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git config --global user.name "Dein Name"
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        und:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git config --global user.email "email@example.com"
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Wenn du schon ein Repository mit Code haben solltest, bei dem du anfängst mit zu entwickeln, oder das du auf ein neues Gerät übertragen willst, kannst du es mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git clone https://domain.tld/deinName/Repostiory.git
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+        
+      <p>
+        auf dein Gerät klonen. Dies tust du in einen leeren Ordner, der noch kein Repository enthält, da beim klonen auch das Repository selbst vom Server gezogen wird. Außerdem musst du erstmal kein remote Repository setzen, da origin automatisch auf die Adresse gesetzt wird, von der du geklont hast. <br>
+        Wenn du schon ein Repository auf deinem Gerät hast, aber das Repository auf dem Server aktuellere Commits hat, kannst du die Änderungen auf dein Gerät synchronisieren. Das geht mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git pull origin [Name vom Branch]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <!-- Script für den Copy-Button und den neuen IDE-Button -->
+  <script>
+    function copyCode(btn) {
+      // Den zu kopierenden Code ermitteln (das <code>-Element, welches direkt vor dem Button steht)
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
