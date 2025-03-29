@@ -2,7 +2,6 @@
 Eine Lernwebsite zum Einstieg ins Programmieren.
 
 To-Do Liste:
-- Seiten für Webentwicklung schreiben.
 - Aufgaben für die Processing Seite schreiben.
 - Fehlermeldungen im Web IDE für Processing ermöglichen.
 - Anleitung für Markdown.
