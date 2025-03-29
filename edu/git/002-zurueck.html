@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Git</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Zurück-Button oben links -->
+  <a href="../git.html" class="back-button">&larr; Zurück</a>
+
+  <!-- Container für den Dokumentationsinhalt -->
+  <div class="doc-container">
+
+    <!-- Überschrift -->
+    <h1>Zurück zu altem Commit</h1>
+
+    <!-- Inhalt: Abwechselnd Text, Bilder und Codeblöcke -->
+    <section class="doc-section">
+      
+      <p>
+        Du hast etwas am Code verändert und musst zurück zu einem alten Commit (Snapshot), weil du es nicht schaffst den Code zu reparieren? <br>
+        Verschaffe dir zuerst eine übersicht darüber, wohin du springen willst, mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git log --graph
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Noch bist du beim neusten commit, also beim Head:
+      </p>
+
+      <div class="doc-image-small">
+        <img src="../../images/git/002-001.png" alt="Genau nach dem erstellen">
+      </div>
+
+      <p>
+        Neben weiteren Informationen findest du nun eine lange folge an Zeichen, bei dem commit zu dem du springen willst. Das ist der Hash des Commits. <br>
+        Dahin kannst du nun zurückspringen mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git checkout [Hash des Commits]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Nun befindest du dich allerdings nichtmehr beim neusten Zustand, sondern in einer früheren Zeit. Alles was du nun machst, hat also keinen festen Branch. Da du dich nun nicht am Head des Branches befindest, hast du nun einen detached Head Zustand.
+      </p>
+
+      <div class="doc-image-small">
+        <img src="../../images/git/002-002.png" alt="Genau nach dem erstellen">
+      </div>
+
+      <p>
+        Du kannst für diesen alten zustand nun einen neuen Branch eröffnen, welchen du irgendwann wieder mit dem master Branch merged, oder du machst ihn zum neusten, indem du alles neuere löschst. Dabei gehen aber alle Sachen im Branch des Commits verloren, die neuer als dieser commit sind:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git reset --hard [Hash des Commits]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <!-- Script für den Copy-Button und den neuen IDE-Button -->
+  <script>
+    function copyCode(btn) {
+      // Den zu kopierenden Code ermitteln (das <code>-Element, welches direkt vor dem Button steht)
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

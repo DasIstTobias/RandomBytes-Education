@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Git</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Zurück-Button oben links -->
+  <a href="../git.html" class="back-button">&larr; Zurück</a>
+
+  <!-- Container für den Dokumentationsinhalt -->
+  <div class="doc-container">
+
+    <!-- Überschrift -->
+    <h1>Schnelleinstieg</h1>
+
+    <!-- Inhalt: Abwechselnd Text, Bilder und Codeblöcke -->
+    <section class="doc-section">
+      <p>
+        Git ist eine Software, mit der sich verschiedene Versionen von Code einfach organisieren lassen. <br>
+        Außerdem können durch Git viele Programmierer gemeinsam an einem Projekt arbeiten, ohne große schwierigkeiten zu bekommen.
+      </p>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Starten wir, indem wir ein Repository (kurz "Repo"), also einen Speicherort für unser Projekt erstellen. <br>
+        Dazu begeben wir uns zuerst in den Ordner auf dem Computer, in dem das Projekt liegt und erstellen das Repo mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git init
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Nun haben wir ein Git Repo erstellt. Du kannst jetzt Dateien erstellen oder mit bereits existierenden Dateien fortfahren. <br>
+        Diese Dateien müssen nun dem Repo hinzugefügt und für den ersten Commit (Snapshot) gestaged werden. Das geht mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git add [Dateiname]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>Oder für alle Dateien im Ordner und allen Unterordnern:</p>
+
+      <pre class="doc-code">
+<code>
+git add .
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Jetzt sind diese Dateien dem Repo hinzugefügt und gestaged, allerdings ist ihr Zustand noch nicht gespeichert. Wenn du die Änderungen in einer Datei zu einem Commit (Also Snapshot des Codes) hinzufügen willst musst du sie jedes mal vor dem neuen Commit mit "git add" Stagen.<br>
+        Wenn du meinst, dass ein Zeitpunkt für einen Snapshot, also eine Sicherung vom Dateizustand, gekommen ist, machst du diesen mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git commit -m "Was du getan hast"
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <div class="doc-image-small">
+        <img src="../../images/git/001-001.png" alt="Genau nach dem erstellen">
+      </div>
+
+      <p>
+        Die Beschreibung, was du getan hast, wird neben deinem Snapshot mitgespeichert, damit du besser weist, wofür der jeweilige Snapshot genau war. <br>
+        Neben der kurzen Beschreibung deiner Änderungen am Code, bekommt der Snapshot auch eine ID zugewiesen. <br>
+        Der Commit den du gerade erstellt hast, ist nun der head (also neuste Dateizustand) im Master (oder Main) Branch. Nun fragst du dich, was ein Branch ist. Die Entwicklung von Software verläuft nicht geradlinig, sondern sehr verstrickt, da mehrere Entwickler gleichzeitig am Code arbeiten. Damit diese nun nicht gegenseitig ihren Code zerstören, gibt es Branches. <br>
+        Wenn du einen neuen Branch erstellst, erstellst du ein Komplettes Abbild des Codes, mit dem nur du arbeitest ohne, dass irgendjemand was ungewolltes tut. Du erstellst einen Branch mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git branch [Irgendein Name]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Standartmäßig bist du noch im master (oder main) Branch. <br>
+        Nun wechselst du also in den Branch, den du gerade erstellt hast mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git checkout [Der Name vom Branch]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Hier kannst du jetzt an Dateien Programmieren und alles mit "git add" und "git commit" versionieren, ohne Einfluss auf dem master branch zu haben. <br>
+      </p>
+
+      <div class="doc-image-small">
+        <img src="../../images/git/001-002.png" alt="Genau nach dem erstellen">
+      </div>
+
+      <p>
+        Wenn das für immer so wäre, wäre das natürlich Sinnlos, also willst du die veränderungen, die du gemacht hast, irgendwann wieder in den master branch übertragen. <br>
+        Zuerst machts du dafür:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git checkout master
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Um in den Masterbranch zu wechseln und dann:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git merge [name des Branches, in dem du gearbeitet hast]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Um die Änderungen in den Master Branch zu übertragen.
+      </p>
+
+      <div class="doc-image-small">
+        <img src="../../images/git/001-003.png" alt="Genau nach dem erstellen">
+      </div>
+
+      <p>
+        Nun kannst du entweder mit "git checkout" zurück in den Branch gehen an dem du gearbeitet hast, oder diesen löschen mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git branch -d [Name des zu löschenden Branches]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <!-- Script für den Copy-Button und den neuen IDE-Button -->
+  <script>
+    function copyCode(btn) {
+      // Den zu kopierenden Code ermitteln (das <code>-Element, welches direkt vor dem Button steht)
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

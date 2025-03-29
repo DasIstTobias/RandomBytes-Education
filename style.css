@@ -158,12 +158,20 @@ body {
 }
 
 /* Kleine Bilder in der Dokumentation */
-.doc-image-small img {
-  max-width: 100%;
-  height: auto;
+/* Angepasst: Relative Größe und 4:3-Verhältnis */
+.doc-image-small {
+  width: 40vw;
+  max-width: 600px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
   border-radius: 8px;
-  display: block;
   margin: 20px auto;
+}
+
+.doc-image-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Codeblöcke */

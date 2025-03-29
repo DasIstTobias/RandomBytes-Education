@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RandomBytes | Education | Git</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <!-- Zurück-Button oben links -->
+  <a href="../git.html" class="back-button">&larr; Zurück</a>
+
+  <!-- Container für den Dokumentationsinhalt -->
+  <div class="doc-container">
+
+    <!-- Überschrift -->
+    <h1>Staging</h1>
+
+    <!-- Inhalt: Abwechselnd Text, Bilder und Codeblöcke -->
+    <section class="doc-section">
+      
+      <p>
+        Wenn du einen neuen Commit erstellst, werden nur die Dateien im Stage in den Commit mit einbezogen. Wenn du einen Commit machst und eine Änderung in einer Datei hast, welche nicht im Stage ist, wird diese auch nicht in den Commit mit einbezogen. <br>
+        Das ist nützlich, damit die Änderungen ordentlicher sind. Wenn du beispielsweise gerade ein neues Feature programmierst und nebenbei noch einen Bug Fixed, welcher aber nichts mit dem Feature zu tun hat, kannst nur die Dateien stagen, welche mit dem Bug in verbindung standen und dann commiten. So kannst du den Bugfix in einem separaten commit zum Feature abspeichern.
+      </p>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Wenn du das ganze nicht willst und einfach immer alle Änderungen mit in den Commit nehmen willst, kannst du mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git commit -a
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        einfach einen Commit erstellen, wobei alle Änderungen vorher automatisch gestaged werden. <br>
+        Das ist aber nicht so übersichtlich, weshalb staging sinnvoll ist. Wenn du eine Datei und alle ihre Änderungen stagen willst geht das mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git add [Dateiname]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Wenn du nur bestimmte stellen in einer Datei mit Stagen willst, geht das mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git add -p [Dateiname]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Nachem du "git add -p" ausgeführt hast, zeigt dir git nacheinander einzelne Stellen im Code, welche du dann mit folgenden Optionen behandeln kannst:
+      </p>
+
+      <ul>
+        <li>"y" um den Codeteil zu stagen.</li>
+        <li>"n" um diesen Codeteil nicht zu stagen.</li>
+        <li>"q" um diesen und alle kommenden Codeteile noch nicht zu stagen.</li>
+        <li>"a" um diesen und alle kommenden Codeteile zu stagen.</li>
+        <li>"d" um diesen und alle kommenden Codeteile zu verwerfen und nie zu stagen.</li>
+        <li>"s" zeigt dir den aktuellen Codeteil in noch kleineren Teilen um ihn besser zu sortieren.</li>
+        <li>"e" um diesen Codeteil Zeilenweise in einem Editor zu bearbeiten.</li>
+        <li>"?" für die Informationen, die du gerade gelesen hast.</li>
+      </ul>
+
+      <div class="diagonal-line"></div>
+
+      <p>Nun hast du vielleicht eine Datei im stage, welche du doch nicht stagen willst. Mit:</p>
+      
+      <pre class="doc-code">
+<code>
+git reset [Dateiname]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        kannst du sie aus dem Stage entfernen. Wenn du nur einzelne Zeilen entfernen willst, geht das mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git reset -p [Dateiname]
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        Die Optionen dabei sind fast die selben, wie bei "git add -p" nur, dass sie hier entfernen und nicht hinzufügen.
+      </p>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Wenn du nichtmehr weißt, welche Dateien Änderungen enthalten, kannst du dir mit:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git status
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        und:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git diff
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        einen überblich über die änderungen verschaffen. <br>
+        "git diff" kann auch als:
+      </p>
+
+      <pre class="doc-code">
+<code>
+git diff --name-only
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+      <p>
+        genutzt werden, um nur die Namen der geänderten Dateien zu sehen.
+      </p>
+
+      <div class="diagonal-line"></div>
+
+      <p>
+        Jetzt wo du durch stagen ausgewählt hast, welche Codestellen in den nächsten Commit sollen, kannst du den neuen Commit erstellen.
+      </p>
+
+      <pre class="doc-code">
+<code>
+git commit -m "Beschreibung der Änderungen"
+</code>
+  <div class="code-btns">
+    <button class="copy-btn" onclick="copyCode(this)">Code kopieren</button>
+  </div>
+      </pre>
+
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://edu.randombytes.eu/">RandomBytes Education</a> by <span property="cc:attributionName">Tobias@RandomBytes</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="../../images/creative_commons/sa.svg" alt=""></a></p>
+    </div>
+  </footer>
+
+  <!-- Script für den Copy-Button und den neuen IDE-Button -->
+  <script>
+    function copyCode(btn) {
+      // Den zu kopierenden Code ermitteln (das <code>-Element, welches direkt vor dem Button steht)
+      const codeBlock = btn.parentElement.previousElementSibling;
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = "Kopiert!";
+        setTimeout(() => {
+          btn.innerText = "Code kopieren";
+        }, 2000);
+      });
+    }
+    function openWebIDE(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
