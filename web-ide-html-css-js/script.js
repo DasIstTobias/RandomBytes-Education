@@ -8,6 +8,11 @@ let currentFileToRename = null;
 let currentFileToDelete = null;
 let currentFileToDownload = null;
 let editor; // CodeMirror editor instance
+let prevEditorSize = null;
+let prevPreviewSize = null;
+let prevConsoleSize = null;
+let dragOverlay = null;
+
 
 /* Initialization: load from localStorage or create defaults */
 function init() {
@@ -507,31 +512,44 @@ document.getElementById('maximizeLeftBtn').addEventListener('click', function() 
 document.getElementById('maximizeRightBtn').addEventListener('click', function() {
   toggleMaximize('right');
 });
+
 function toggleMaximize(panel) {
-  const editorPane = document.getElementById('editorPane');
-  const previewPane = document.getElementById('previewPane');
-  const maximizeLeftBtn = document.getElementById('maximizeLeftBtn');
-  const maximizeRightBtn = document.getElementById('maximizeRightBtn');
+  const ed = document.getElementById('editorPane');
+  const pr = document.getElementById('previewPane');
+  const btnL = document.getElementById('maximizeLeftBtn');
+  const btnR = document.getElementById('maximizeRightBtn');
+  const bar  = document.getElementById('verticalResizer');
+
   if (maximizedPanel === panel) {
-    editorPane.style.flex = "1";
-    previewPane.style.flex = "1";
-    maximizedPanel = null;
-    maximizeLeftBtn.textContent = "Maximize Editor";
-    maximizeRightBtn.textContent = "Maximize Preview";
-  } else {
-    if (panel === 'left') {
-      editorPane.style.flex = "1 1 100%";
-      previewPane.style.flex = "0";
-      maximizedPanel = panel;
-      maximizeLeftBtn.textContent = "Minimize Editor";
-      maximizeRightBtn.textContent = "Maximize Preview";
-    } else if (panel === 'right') {
-      previewPane.style.flex = "1 1 100%";
-      editorPane.style.flex = "0";
-      maximizedPanel = panel;
-      maximizeRightBtn.textContent = "Minimize Preview";
-      maximizeLeftBtn.textContent = "Maximize Editor";
-    }
+    // un-maximize: restore last drag sizes, show bar
+    ed.style.flex      = prevEditorSize  || '1';
+    pr.style.flex      = prevPreviewSize || '1';
+    bar.style.display  = 'block';
+    btnL.textContent   = 'Maximize Editor';
+    btnR.textContent   = 'Maximize Preview';
+    maximizedPanel     = null;
+
+  } else if (panel === 'left') {
+    // maximize editor
+    prevEditorSize     = ed.style.flex;
+    prevPreviewSize    = pr.style.flex;
+    ed.style.flex      = '1 1 100%';
+    pr.style.flex      = '0';
+    bar.style.display  = 'none';
+    btnL.textContent   = 'Minimize Editor';
+    btnR.textContent   = 'Maximize Preview';
+    maximizedPanel     = 'left';
+
+  } else if (panel === 'right') {
+    // maximize preview
+    prevEditorSize     = ed.style.flex;
+    prevPreviewSize    = pr.style.flex;
+    pr.style.flex      = '1 1 100%';
+    ed.style.flex      = '0';
+    bar.style.display  = 'none';
+    btnR.textContent   = 'Minimize Preview';
+    btnL.textContent   = 'Maximize Editor';
+    maximizedPanel     = 'right';
   }
 }
 
@@ -621,3 +639,95 @@ document.addEventListener('drop', function(e) {
 /* Save current file before the window unloads */
 window.addEventListener('beforeunload', saveCurrentFile);
 window.addEventListener('load', init);
+
+// ─── Horizontal resizing for console ────────────────────────────────────────
+const horizontalResizer = document.getElementById('horizontalResizer');
+let isResizingHoriz = false;
+
+horizontalResizer.addEventListener('mousedown', () => {
+  isResizingHoriz = true;
+  document.body.style.userSelect = 'none';
+});
+
+document.addEventListener('mousemove', e => {
+  if (!isResizingHoriz) return;
+  const btHeight = document.getElementById('bottomToolbar').offsetHeight;
+  let consolePx = window.innerHeight - e.clientY - btHeight;
+  let pct = consolePx / window.innerHeight * 100;
+  pct = Math.min(Math.max(pct, 20), 70);
+  if (Math.abs(pct - 33.33) < 2) pct = 33.33;  // snap to default
+  document.getElementById('consolePanel').style.height = `${pct}vh`;
+});
+
+document.addEventListener('mouseup', () => {
+  if (isResizingHoriz) {
+    isResizingHoriz = false;
+    document.body.style.userSelect = '';
+  }
+});
+
+// ─── Enhanced vertical splitter with overlay & gentler snap ────────────────
+const verticalResizer = document.getElementById('verticalResizer');
+let isResizingVert = false;
+
+verticalResizer.addEventListener('mousedown', e => {
+  isResizingVert = true;
+  document.body.style.userSelect = 'none';
+
+  // disable pane flex-transitions for instant response
+  const ed = document.getElementById('editorPane');
+  const pr = document.getElementById('previewPane');
+  ed.style.transition = 'none';
+  pr.style.transition = 'none';
+
+  // create a full-page transparent overlay so the iframe won't swallow events
+  dragOverlay = document.createElement('div');
+  Object.assign(dragOverlay.style, {
+    position: 'fixed',
+    top: '0', left: '0',
+    width: '100%', height: '100%',
+    cursor: 'col-resize',
+    zIndex: '999'
+  });
+  document.body.appendChild(dragOverlay);
+});
+
+document.addEventListener('mousemove', e => {
+  if (!isResizingVert) return;
+  const container = document.getElementById('container');
+  const rect = container.getBoundingClientRect();
+  let pct = (e.clientX - rect.left) / rect.width * 100;
+  pct = Math.min(Math.max(pct, 20), 80);
+  // gentler snapping: only within 1% of center
+  if (Math.abs(pct - 50) < 1) pct = 50;
+
+  // apply new sizes and move the bar
+  const ed = document.getElementById('editorPane');
+  const pr = document.getElementById('previewPane');
+  ed.style.flex = `0 0 ${pct}%`;
+  pr.style.flex = `0 0 ${100 - pct}%`;
+  verticalResizer.style.left = `${pct}%`;
+});
+
+document.addEventListener('mouseup', () => {
+  if (!isResizingVert) return;
+  isResizingVert = false;
+  document.body.style.userSelect = '';
+
+  // restore pane transitions
+  const ed = document.getElementById('editorPane');
+  const pr = document.getElementById('previewPane');
+  ed.style.transition = '';
+  pr.style.transition = '';
+
+  // remove the overlay
+  if (dragOverlay) {
+    document.body.removeChild(dragOverlay);
+    dragOverlay = null;
+  }
+});
+
+// position the bar at 50% on load
+window.addEventListener('load', () => {
+  verticalResizer.style.left = '50%';
+});
